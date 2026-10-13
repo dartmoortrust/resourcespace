@@ -1,0 +1,51 @@
+services:
+  
+  resourcespace:
+    build: .
+    container_name: resourcespace
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    volumes:
+      - rs_local_system:/var/www/html/filestore/system
+      - rs_local_tmp:/var/www/html/filestore/tmp
+      - /run/media/jamie/backup/resourcespace/filestore/original:/var/www/html/filestore/original
+      - /run/media/jamie/backup/resourcespace/filestore/resized:/var/www/html/filestore/resized
+      - ./config.php:/var/www/html/include/config.php
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: unless-stopped
+    env_file:
+      - db.env
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - backend
+      - frontend
+  typesense:
+    container_name: typesense
+    image: typesense/typesense:30.2
+    restart: on-failure
+    ports:
+      - "8108:8108"
+    volumes:
+      - ./typesense-data:/data
+    command: '--data-dir /data --api-key=Yltmyya2008! --enable-cors'
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  mariadb:
+  rs_local_system:
+  rs_local_tmp:
