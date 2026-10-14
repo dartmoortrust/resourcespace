@@ -47,5 +47,5 @@ networks:
 
 volumes:
   mariadb:
-  # rs_local_system:
-  # rs_local_tmp:
+   rs_local_system:
+   rs_local_tmp:
