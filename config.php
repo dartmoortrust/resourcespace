@@ -14,7 +14,7 @@ $mysql_password = 'change-me';
 $mysql_db = 'resourcespace';
 
 # Base URL of the installation
-$baseurl = 'http://localhost';
+$baseurl = 'http://localhost:8010';
 
 # Email settings
 $email_notify = 'jamie@dunbar.me';
