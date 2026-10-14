@@ -9,8 +9,8 @@ services:
     volumes:
       - rs_local_system:/var/www/html/filestore/system
       - rs_local_tmp:/var/www/html/filestore/tmp
-      - /run/media/jamie/backup/resourcespace/filestore/original:/var/www/html/filestore/original
-      - /run/media/jamie/backup/resourcespace/filestore/resized:/var/www/html/filestore/resized
+      - ./filestore/original:/var/www/html/filestore/original
+      - ./filestore/resized:/var/www/html/filestore/resized
       - ./config.php:/var/www/html/include/config.php
     networks:
       - frontend
@@ -29,17 +29,17 @@ services:
     networks:
       - backend
       - frontend
-  typesense:
-    container_name: typesense
-    image: typesense/typesense:30.2
-    restart: on-failure
-    ports:
-      - "8108:8108"
-    volumes:
-      - ./typesense-data:/data
-    command: '--data-dir /data --api-key=Yltmyya2008! --enable-cors'
-    networks:
-      - backend
+  # typesense:
+  #   container_name: typesense
+  #   image: typesense/typesense:30.2
+  #   restart: on-failure
+  #   ports:
+  #     - "8108:8108"
+  #   volumes:
+  #     - ./typesense-data:/data
+  #   command: '--data-dir /data --api-key=Yltmyya2008! --enable-cors'
+  #   networks:
+  #     - backend
 
 networks:
   frontend:
@@ -47,5 +47,5 @@ networks:
 
 volumes:
   mariadb:
-  rs_local_system:
-  rs_local_tmp:
+  # rs_local_system:
+  # rs_local_tmp:
