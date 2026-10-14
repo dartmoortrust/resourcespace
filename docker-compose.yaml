@@ -12,6 +12,7 @@ services:
       # - ./filestore/original:/var/www/html/filestore/original
       # - ./filestore/resized:/var/www/html/filestore/resized
       - ./config.php:/var/www/html/include/config.php
+      - ./filestore:/var/www/html/filestore
     networks:
       - frontend
       - backend
