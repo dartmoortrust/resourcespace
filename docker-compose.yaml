@@ -14,7 +14,6 @@ services:
       - ./config.php:/var/www/html/include/config.php
       - ./filestore:/var/www/html/filestore
     networks:
-      - br0
       - frontend
       - backend
     ports:
@@ -46,10 +45,6 @@ services:
 networks:
   frontend:
   backend:
-  br0:
-    name: br0
-    external: true
-
 
 volumes:
   mariadb:
