@@ -12,7 +12,7 @@ services:
       - frontend
       - backend
     ports:
-      - "8010:80"
+      - "80:80"
   mariadb:
     image: mariadb
     container_name: mariadb
