@@ -46,6 +46,10 @@ services:
 networks:
   frontend:
   backend:
+  br0:
+    name: br0
+    external: true
+
 
 volumes:
   mariadb:
