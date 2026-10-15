@@ -1,5 +1,4 @@
 services:
-  
   resourcespace:
     build: .
     container_name: resourcespace
@@ -7,18 +6,13 @@ services:
     depends_on:
       - mariadb
     volumes:
-      # - rs_local_system:/var/www/html/filestore/system
-      # - rs_local_tmp:/var/www/html/filestore/tmp
-      # - ./filestore/original:/var/www/html/filestore/original
-      # - ./filestore/resized:/var/www/html/filestore/resized
+      - filestore:/var/www/html/filestore
       - ./config.php:/var/www/html/include/config.php
-      - ./filestore:/var/www/html/filestore
     networks:
       - frontend
       - backend
     ports:
       - "8010:80"
-
   mariadb:
     image: mariadb
     container_name: mariadb
@@ -30,23 +24,11 @@ services:
     networks:
       - backend
       - frontend
-  # typesense:
-  #   container_name: typesense
-  #   image: typesense/typesense:30.2
-  #   restart: on-failure
-  #   ports:
-  #     - "8108:8108"
-  #   volumes:
-  #     - ./typesense-data:/data
-  #   command: '--data-dir /data --api-key=Yltmyya2008! --enable-cors'
-  #   networks:
-  #     - backend
-
 networks:
   frontend:
   backend:
 
 volumes:
   mariadb:
- # rs_local_system:
- # rs_local_tmp:
+  filestore:
+
