@@ -14,7 +14,7 @@ $mysql_password = 'change-me';
 $mysql_db = 'resourcespace';
 
 # Base URL of the installation
-$baseurl = 'http://blackbox:8010';
+$baseurl = 'https://trust.r.dnbr.uk';
 
 # Email settings
 $email_notify = 'jamie@dunbar.me';
