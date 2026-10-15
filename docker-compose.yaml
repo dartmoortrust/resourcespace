@@ -28,6 +28,7 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     networks:
+      - br0
       - backend
       - frontend
   # typesense:
